@@ -25,7 +25,7 @@ groq_api_key = os.getenv('GROQ_API_KEY')
 GDRIVE_FILE_ID = '1BTF3EuWKHf6pIhOdZej64ON4lm0zHaAo'  # Replace with your actual FILE_ID
 GDRIVE_DOWNLOAD_URL = f'https://drive.google.com/uc?id={GDRIVE_FILE_ID}'
 ZIP_PATH = 'faiss_health.zip'
-EXTRACT_DIR = 'Faiss_health/Faiss_health'
+EXTRACT_DIR = 'faiss health/faiss health'
 
 
 ###############################################################################
