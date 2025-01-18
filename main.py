@@ -55,13 +55,13 @@ def initialize_components():
                 return False
 
         # Debugging: List contents of EXTRACT_DIR to verify extraction
-        if os.path.exists(EXTRACT_DIR):
+        #if os.path.exists(EXTRACT_DIR):
             # Temporary debugging statements
             #st.write("✅ FAISS embeddings are present.")
             #st.write("Contents of 'faiss health/Faiss_health':")
-            st.write(os.listdir(EXTRACT_DIR))
-        else:
-            st.write("❌ FAISS embeddings directory does not exist after extraction.")
+            #st.write(os.listdir(EXTRACT_DIR))
+        #else:
+            #st.write("❌ FAISS embeddings directory does not exist after extraction.")
         
         return True
 
