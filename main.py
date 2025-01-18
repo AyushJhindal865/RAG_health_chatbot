@@ -180,7 +180,7 @@ def sidebar():
 
         **Features:**
         - Answer health-related queries.
-        - Provides document similarity search.
+        - Includes over 900 research papers.
         - Utilizes advanced language models for accurate responses.
         """
     )
