@@ -1,6 +1,5 @@
 langchain
 langchain-groq
-langchain-chroma
 langchain-core
 python-dotenv
 streamlit
@@ -14,4 +13,3 @@ sentence-transformers
 langchain_huggingface
 gdown
 faiss-cpu
-chromadb
