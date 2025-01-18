@@ -25,8 +25,7 @@ groq_api_key = os.getenv('GROQ_API_KEY')
 GDRIVE_FILE_ID = '1BTF3EuWKHf6pIhOdZej64ON4lm0zHaAo'  # Replace with your actual FILE_ID
 GDRIVE_DOWNLOAD_URL = f'https://drive.google.com/uc?id={GDRIVE_FILE_ID}'
 ZIP_PATH = 'faiss_health.zip'
-EXTRACT_DIR = 'faiss health'
-
+EXTRACT_DIR = 'faiss health/Faiss_health'  # Corrected path to match extraction
 
 ###############################################################################
 # 1. Initialize Session State
@@ -59,7 +58,7 @@ def initialize_components():
         if os.path.exists(EXTRACT_DIR):
             # Temporary debugging statements
             st.write("✅ FAISS embeddings are present.")
-            st.write("Contents of 'faiss health':")
+            st.write("Contents of 'faiss health/Faiss_health':")
             st.write(os.listdir(EXTRACT_DIR))
         else:
             st.write("❌ FAISS embeddings directory does not exist after extraction.")
@@ -144,6 +143,7 @@ def initialize_components():
 
         # Store in session state
         st.session_state.history_aware_chain = retrieval_chain
+
 
 ###############################################################################
 # 2. Streamlit Layout (Header, Sidebar, Footer)
