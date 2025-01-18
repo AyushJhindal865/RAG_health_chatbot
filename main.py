@@ -25,13 +25,14 @@ groq_api_key = os.getenv('GROQ_API_KEY')
 GDRIVE_FILE_ID = '1BTF3EuWKHf6pIhOdZej64ON4lm0zHaAo'  # Replace with your actual FILE_ID
 GDRIVE_DOWNLOAD_URL = f'https://drive.google.com/uc?id={GDRIVE_FILE_ID}'
 ZIP_PATH = 'faiss_health.zip'
-EXTRACT_DIR = 'faiss health/faiss health'
+EXTRACT_DIR = 'faiss health'
 
 
 ###############################################################################
 # 1. Initialize Session State
 ###############################################################################
 def initialize_components():
+    
     # Function to download and extract FAISS embeddings
     @st.cache_resource
     def download_and_extract_embeddings():
@@ -44,18 +45,25 @@ def initialize_components():
                 return False
 
             try:
-                # Create the extraction directory if it doesn't exist
-                os.makedirs(EXTRACT_DIR, exist_ok=True)
-
                 # Extract the zip file
                 with zipfile.ZipFile(ZIP_PATH, 'r') as zip_ref:
-                    zip_ref.extractall('Faiss_health')
-
+                    zip_ref.extractall('.')  # Extract to current directory
+                
                 # Remove the zip file after extraction to save space
                 os.remove(ZIP_PATH)
             except Exception as e:
                 st.error(f"❌ Error extracting embeddings: {e}")
                 return False
+
+        # Debugging: List contents of EXTRACT_DIR to verify extraction
+        if os.path.exists(EXTRACT_DIR):
+            # Temporary debugging statements
+            st.write("✅ FAISS embeddings are present.")
+            st.write("Contents of 'faiss health':")
+            st.write(os.listdir(EXTRACT_DIR))
+        else:
+            st.write("❌ FAISS embeddings directory does not exist after extraction.")
+        
         return True
 
     # Initialize embeddings
@@ -136,7 +144,6 @@ def initialize_components():
 
         # Store in session state
         st.session_state.history_aware_chain = retrieval_chain
-
 
 ###############################################################################
 # 2. Streamlit Layout (Header, Sidebar, Footer)
